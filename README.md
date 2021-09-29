@@ -2,12 +2,12 @@
 
 App that collects your copies in your local database. You can see in a list, delete it, save to favourites list or copy it again.
 
-## PICTURE 1
-## PICTURE 2
+![](https://github.com/yeocak/YourCopiesBoard/blob/master/forgithub/first.png)
+![](https://github.com/yeocak/YourCopiesBoard/blob/master/forgithub/second.png)
 
 -----
 
-## DIAGRAM 1
+![](https://github.com/yeocak/YourCopiesBoard/blob/master/forgithub/third.png)
 
 <br>
 
@@ -16,3 +16,12 @@ App that collects your copies in your local database. You can see in a list, del
 - react-native-vector-icons
 - react-native-dynamic-search-bar
 - react-native-clipboard-listener
+
+----
+
+Fixs & Updates:
+
+- [ ] Fix Gridlayout
+- [ ] Update Clipboard library
+- [ ] Fix background service
+- [ ] 
