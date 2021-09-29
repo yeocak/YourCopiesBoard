@@ -2,14 +2,18 @@
 
 App that collects your copies to your local database. You can see in a list, delete it, save to favourites list or copy it again.
 
-![](https://github.com/yeocak/YourCopiesBoard/blob/master/forgithub/first.png)
-![](https://github.com/yeocak/YourCopiesBoard/blob/master/forgithub/second.png)
+<p align="center">
+    <img src="https://github.com/yeocak/YourCopiesBoard/blob/master/forgithub/first.png"/>
+    <img src="https://github.com/yeocak/YourCopiesBoard/blob/master/forgithub/second.png"/>
+</p>
 
 -----
 
-![](https://github.com/yeocak/YourCopiesBoard/blob/master/forgithub/third.png)
+<p align="center">
+    <img src="https://github.com/yeocak/YourCopiesBoard/blob/master/forgithub/third.png"/>
+</p>
 
-<br>
+-----
 
 **Used in this project:**
     
@@ -24,4 +28,3 @@ Fixs & Updates:
 - [ ] Fix Gridlayout
 - [ ] Update Clipboard library
 - [ ] Fix background service
-- [ ] 
