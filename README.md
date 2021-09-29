@@ -1,6 +1,6 @@
 # YourCopiesBoard - React Native (Typescript) Practice App
 
-App that collects your copies in your local database. You can see in a list, delete it, save to favourites list or copy it again.
+App that collects your copies to your local database. You can see in a list, delete it, save to favourites list or copy it again.
 
 ![](https://github.com/yeocak/YourCopiesBoard/blob/master/forgithub/first.png)
 ![](https://github.com/yeocak/YourCopiesBoard/blob/master/forgithub/second.png)
