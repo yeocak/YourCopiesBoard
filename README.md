@@ -20,6 +20,7 @@ App that collects your copies to your local database. You can see in a list, del
 - react-native-vector-icons
 - react-native-dynamic-search-bar
 - react-native-clipboard-listener
+- realm
 
 ----
 
