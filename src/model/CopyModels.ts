@@ -11,17 +11,19 @@ export interface SingleCopy {
 }
 
 export class SingleCopy {
-    text: string
-    isFavourite: boolean
+    public text: string
+    public isFavourite = false
 
     constructor (text: string)
     constructor (text: string, isFavourite?: boolean) {
-        this.text = text,
-        this.isFavourite = isFavourite
+        this.text = text
+        this.isFavourite = isFavourite || false
     }
 
     // Repositories
     addToDatabase = () => {
         addCopy(this)
     }
+
+    
 }
