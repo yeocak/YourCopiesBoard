@@ -10,10 +10,7 @@ async function setCopyListener() {
     const currentCopy = await Clipboard.getString()
     const lastCopy = await takeLastCopy()
     if (lastCopy != null && lastCopy.text == currentCopy) return
-    const copy: SingleCopy = {
-        text: currentCopy,
-        isFavourite: false
-    }
+    const copy = new SingleCopy(currentCopy)
     addCopy(copy)
 }
 

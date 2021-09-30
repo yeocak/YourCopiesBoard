@@ -54,12 +54,9 @@ export const takeLastCopy = async () => {
 
     const realmData = realm.objects("Copy")[realm.objects("Copy").length - 1]
 
-    if(realmData == undefined) return null
+    if (realmData == undefined) return null
 
-    const value: SingleCopy = {
-        text: realmData.text,
-        isFavourite: realmData.isFavourite
-    }
+    const value = new SingleCopy(realmData.text, realmData.isFavourite)
 
     return value
 }
@@ -73,10 +70,7 @@ export const makeDoubleListCopy = (realmObject: Realm.Results<Realm.Object>) => 
     }
 
     for (let a = 0; a < realmObject.length; a++) {
-        const currentObject: SingleCopy = {
-            text: realmObject[a].text,
-            isFavourite: realmObject[a].isFavourite
-        }
+        const currentObject = new SingleCopy(realmObject[a].text, realmObject[a].isFavourite)
 
         if (isFirst) {
             value.columnOne.push(currentObject)
@@ -101,10 +95,7 @@ export const takeFavouritesCopies = async () => {
     const value: SingleCopy[] = []
 
     for (let a = 0; a < allData.length; a++) {
-        const newData: SingleCopy = {
-            text: allData[a].text,
-            isFavourite: true
-        }
+        const newData = new SingleCopy(allData[a].text, true)
 
         value.push(newData)
     }
@@ -138,7 +129,7 @@ export const deleteCopy = async (copy: SingleCopy) => {
     const equal = realm.objects("Copy")
         .filtered(`isFavourite = ${copy.isFavourite}`)
         .filtered(`text = "${copy.text}"`)
-        
+
     realm.write(() => {
         realm.delete(equal)
     })
