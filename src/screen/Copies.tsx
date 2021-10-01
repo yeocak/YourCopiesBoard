@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 import Colors from '../Colors';
 import CustomGridList from '../components/CustomGridList';
 import MySearchBar from '../components/MySearchBar';

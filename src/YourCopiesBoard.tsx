@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Clipboard, View } from 'react-native';
+import { View } from 'react-native';
 import Copies from './screen/Copies';
 import Favourites from './screen/Favourites';
 import ClipboardListener from 'react-native-clipboard-listener';
 import { addCopy, takeLastCopy } from './service/RealmServices';
 import { SingleCopy } from './model/CopyModels';
+import Clipboard from '@react-native-clipboard/clipboard';
 
 async function setCopyListener() {
     const currentCopy = await Clipboard.getString()

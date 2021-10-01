@@ -26,6 +26,6 @@ App that collects your copies to your local database. You can see in a list, del
 
 Fixs & Updates:
 
+- [x] Update Clipboard library
 - [ ] Fix Gridlayout
-- [ ] Update Clipboard library
 - [ ] Fix background service
