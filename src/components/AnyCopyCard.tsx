@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Colors from '../Colors';
+import Colors from '../consts/Colors';
 import { SingleCopy } from '../model/CopyModels';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { changeFavourite } from '../service/RealmServices';

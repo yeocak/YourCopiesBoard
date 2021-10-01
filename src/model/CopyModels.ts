@@ -33,4 +33,8 @@ export class SingleCopy {
         Services.changeFavourite(this)
     }
 
+    deleteCopyFromDatabase = () => {
+        Services.deleteCopy(this)
+    }
+
 }

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import SearchBar from 'react-native-dynamic-search-bar';
-import Colors from '../Colors';
+import Colors from '../consts/Colors';
 
 interface Props {
   style: StyleProp<ViewStyle>
@@ -14,7 +14,7 @@ interface State {
   value: string
 }
 
-export default class MySearchBar extends React.Component<Props, State> {
+export default class CustomSearchBar extends React.Component<Props, State> {
   state: State = {
     value: "",
   };

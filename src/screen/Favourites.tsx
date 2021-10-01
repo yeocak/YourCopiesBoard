@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { FlatList, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
-import Colors from '../Colors';
+import Colors from '../consts/Colors';
 import FavouriteCopyCard from '../components/FavouriteCopyCard';
 import { SingleCopy } from '../model/CopyModels';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { deleteCopy, takeFavouritesCopies } from '../service/RealmServices';
+import { takeFavouritesCopies } from '../service/RealmServices';
 
 interface Props {
     onClickBack: () => void
@@ -30,7 +30,7 @@ export default class Favourites extends React.Component<Props, State> {
     }
 
     deleteACopy = (copy: SingleCopy) => {
-        deleteCopy(copy)
+        copy.deleteFromDatabase()
 
         const newData = this.state.data.filter((item: SingleCopy) => {
             return item !== copy

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
-import Colors from '../Colors';
+import Colors from '../consts/Colors';
 import CustomGridList from '../components/CustomGridList';
-import MySearchBar from '../components/MySearchBar';
+import CustomSearchBar from '../components/CustomSearchBar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { CopyModel, SingleCopy } from '../model/CopyModels';
-import { deleteCopy, makeDoubleListCopy, takeCopyWithText, takeNotFavouriteCopies } from '../service/RealmServices';
+import makeDoubleListCopy from '../utils/makeDoubleListCopy';
+import { takeCopyWithText, takeNotFavouriteCopies } from '../service/RealmServices';
 
 interface Props {
     onClickStar: () => void
@@ -21,7 +22,7 @@ const Copies: React.FC<Props> = (props: Props) => {
     }, ["0"])
 
     const deleteACopy = (copy: SingleCopy) => {
-        deleteCopy(copy)
+        copy.deleteFromDatabase()
 
         const newColOne = data.columnOne.filter((item: SingleCopy) => {
             return item !== copy
@@ -45,13 +46,13 @@ const Copies: React.FC<Props> = (props: Props) => {
     }
 
     const filterWithText = (text: string) => {
-        takeCopyWithText(text).then((item) => {
+        takeCopyWithText(text, true).then((item) => {
             setData(makeDoubleListCopy(item))
         })
     }
 
     return <View style={styles.container}>
-        <MySearchBar
+        <CustomSearchBar
             style={styles.searchBar}
             onClearPress = {takeAllData}
             onSearchPress={(text: string) => {

@@ -2,25 +2,22 @@ import * as React from 'react';
 import { View } from 'react-native';
 import Copies from './screen/Copies';
 import Favourites from './screen/Favourites';
-import ClipboardListener from 'react-native-clipboard-listener';
-import { addCopy, takeLastCopy } from './service/RealmServices';
+import { takeLastCopy } from './service/RealmServices';
 import { SingleCopy } from './model/CopyModels';
 import Clipboard from '@react-native-clipboard/clipboard';
+import setClipboardListener from './utils/setClipboardListener';
 
-async function setCopyListener() {
+async function takeCopyToDatabase() {
     const currentCopy = await Clipboard.getString()
     const lastCopy = await takeLastCopy()
     if (lastCopy != null && lastCopy.text == currentCopy) return
     const copy = new SingleCopy(currentCopy)
-    addCopy(copy)
+    copy.addToDatabase()
 }
 
 const YourCopiesBoard: React.FC = () => {
     React.useEffect(() => {
-        ClipboardListener.removeListener()
-        ClipboardListener.setListener(async () => {
-            setCopyListener()
-        })
+        setClipboardListener(() => { takeCopyToDatabase() })
     })
 
     const copiesScreen =

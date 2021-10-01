@@ -1,5 +1,5 @@
 import Realm from "realm";
-import { CopyModel, SingleCopy } from "../model/CopyModels";
+import { SingleCopy } from "../model/CopyModels";
 
 const copyData = {
     name: "Copy",
@@ -39,10 +39,11 @@ export const takeNotFavouriteCopies = async () => {
         })
 
     allNotFavourites.forEach((item) => {
-        tasks.push(item)
+        const newItem = new SingleCopy(item.text, false)
+        tasks.push(newItem)
     })
 
-    //realm.close()
+    realm.close()
 
     return tasks
 }
@@ -61,28 +62,7 @@ export const takeLastCopy = async () => {
 
     const value = new SingleCopy(lastCopy.text, lastCopy.isFavourite)
 
-    return value
-}
-
-export const makeDoubleListCopy = (copyList : SingleCopy[]) => {
-    let isFirst = true
-
-    let value: CopyModel = {
-        columnOne: [],
-        columnTwo: []
-    }
-
-    for (let a = 0; a < copyList.length; a++) {
-        const currentObject = new SingleCopy(copyList[a].text, copyList[a].isFavourite)
-
-        if (isFirst) {
-            value.columnOne.push(currentObject)
-        } else {
-            value.columnTwo.push(currentObject)
-        }
-
-        isFirst = !isFirst
-    }
+    realm.close()
 
     return value
 }
@@ -99,7 +79,6 @@ export const takeFavouritesCopies = async () => {
 
     for (let a = 0; a < allData.length; a++) {
         const newData = new SingleCopy(allData[a].text, true)
-
         value.push(newData)
     }
 
@@ -140,7 +119,7 @@ export const deleteCopy = async (copy: SingleCopy) => {
     realm.close()
 }
 
-export const takeCopyWithText = async (text: string) => {
+export const takeCopyWithText = async (text: string, ignoreCaps?: boolean) => {
     const realm = await Realm.open({
         path: "copies",
         schema: [copyData],
@@ -149,14 +128,15 @@ export const takeCopyWithText = async (text: string) => {
     const tasks = []
 
     const allNotFavourites = (realm.objects("Copy") as Realm.Results<SingleCopy & Realm.Object>).filter((item): boolean => {
-        return item.text.includes(text)
+        return ignoreCaps ? item.text.toLowerCase().includes(text.toLowerCase()) : item.text.includes(text)
     })
 
     allNotFavourites.forEach((item) => {
-        tasks.push(item)
+        const newData = new SingleCopy(item.text, item.isFavourite)
+        tasks.push(newData)
     })
 
-    //realm.close()
+    realm.close()
 
     return tasks
 }
