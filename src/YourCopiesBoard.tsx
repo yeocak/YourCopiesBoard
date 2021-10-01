@@ -2,8 +2,8 @@ import * as React from 'react';
 import { View } from 'react-native';
 import Copies from './screen/Copies';
 import Favourites from './screen/Favourites';
-import { takeLastCopy } from './service/RealmServices';
-import { SingleCopy } from './model/CopyModels';
+import { takeLastCopy } from './service/RealmMultiRepositories';
+import SingleCopy from './model/SingleCopy';
 import Clipboard from '@react-native-clipboard/clipboard';
 import setClipboardListener from './utils/setClipboardListener';
 

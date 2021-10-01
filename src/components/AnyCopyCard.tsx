@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Colors from '../consts/Colors';
-import { SingleCopy } from '../model/CopyModels';
+import SingleCopy from '../model/SingleCopy';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { changeFavourite } from '../service/RealmServices';
 import Clipboard from '@react-native-clipboard/clipboard';
 
 interface Props {
@@ -28,7 +27,7 @@ export default class AnyCopyCard extends React.Component<Props, State>{
     onClickedFavourite = () => {
         const newData = new SingleCopy(this.state.currentData.text)
 
-        changeFavourite(this.state.currentData)
+        this.state.currentData.changeIsFavourite()
 
         newData.isFavourite = !this.state.currentData.isFavourite
 

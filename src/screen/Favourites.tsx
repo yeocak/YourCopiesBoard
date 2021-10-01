@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { FlatList, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Colors from '../consts/Colors';
 import FavouriteCopyCard from '../components/FavouriteCopyCard';
-import { SingleCopy } from '../model/CopyModels';
+import SingleCopy from '../model/SingleCopy';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { takeFavouritesCopies } from '../service/RealmServices';
+import * as Services from '../service/RealmMultiRepositories';
 
 interface Props {
     onClickBack: () => void
@@ -22,7 +22,7 @@ export default class Favourites extends React.Component<Props, State> {
     }
 
     componentDidMount() {
-        takeFavouritesCopies().then((item: SingleCopy[]) => {
+        Services.takeFavouritesCopies().then((item: SingleCopy[]) => {
             this.setState({
                 data: item
             })

@@ -1,6 +1,5 @@
-
 import * as React from 'react';
-import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import SearchBar from 'react-native-dynamic-search-bar';
 import Colors from '../consts/Colors';
 

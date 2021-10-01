@@ -4,9 +4,10 @@ import Colors from '../consts/Colors';
 import CustomGridList from '../components/CustomGridList';
 import CustomSearchBar from '../components/CustomSearchBar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { CopyModel, SingleCopy } from '../model/CopyModels';
+import SingleCopy from '../model/SingleCopy';
+import MultiColumnCopies from '../model/MultiColumnCopies';
 import makeDoubleListCopy from '../utils/makeDoubleListCopy';
-import { takeCopyWithText, takeNotFavouriteCopies } from '../service/RealmServices';
+import * as Services from '../service/RealmMultiRepositories';
 
 interface Props {
     onClickStar: () => void
@@ -31,7 +32,7 @@ const Copies: React.FC<Props> = (props: Props) => {
             return item !== copy
         })
 
-        const newData: CopyModel = {
+        const newData: MultiColumnCopies = {
             columnOne: newColOne,
             columnTwo: newColTwo
         }
@@ -40,13 +41,13 @@ const Copies: React.FC<Props> = (props: Props) => {
     }
 
     const takeAllData = () => {
-        takeNotFavouriteCopies().then((item) => {
+        Services.takeNotFavouriteCopies().then((item) => {
             setData(makeDoubleListCopy(item))
         })
     }
 
     const filterWithText = (text: string) => {
-        takeCopyWithText(text, true).then((item) => {
+        Services.takeCopyWithText(text, true).then((item) => {
             setData(makeDoubleListCopy(item))
         })
     }

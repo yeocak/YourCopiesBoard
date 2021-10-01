@@ -1,16 +1,11 @@
-import * as Services from "../service/RealmServices"
+import * as Services from "../service/RealmSingleRepositories"
 
-export interface CopyModel {
-    columnOne: SingleCopy[]
-    columnTwo: SingleCopy[]
-}
-
-export interface SingleCopy {
+export default interface SingleCopy {
     text: string
     isFavourite: boolean
 }
 
-export class SingleCopy {
+export default class SingleCopy {
     public text: string
     public isFavourite = false
 

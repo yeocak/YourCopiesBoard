@@ -1,10 +1,11 @@
-import { CopyModel, SingleCopy } from "../model/CopyModels"
+import SingleCopy from "../model/SingleCopy"
+import MultiColumnCopies from '../model/MultiColumnCopies'
 
 // Takes your SingleCopy array and divides to two array and inserts to new CopyModel
 const makeDoubleListCopy = (copyList : SingleCopy[]) => {
     let isFirst = true
 
-    let value: CopyModel = {
+    let value: MultiColumnCopies = {
         columnOne: [],
         columnTwo: []
     }

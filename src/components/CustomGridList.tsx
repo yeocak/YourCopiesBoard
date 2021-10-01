@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { FlatList, ScrollView, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
-import { CopyModel, SingleCopy } from '../model/CopyModels';
+import { FlatList, ScrollView, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import SingleCopy from '../model/SingleCopy';
+import MultiColumnCopies from '../model/MultiColumnCopies'
 import AnyCopyCard from './AnyCopyCard';
 
 type CustomProps = {
     style: StyleProp<ViewStyle>,
-    data: CopyModel,
+    data: MultiColumnCopies,
     selectedItem: SingleCopy,
     onPressDelete: (item: SingleCopy) => void,
     onPressCard: (item: SingleCopy) => void
