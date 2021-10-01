@@ -2,7 +2,6 @@ import * as React from 'react';
 import { FlatList, ScrollView, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { CopyModel, SingleCopy } from '../model/CopyModels';
 import AnyCopyCard from './AnyCopyCard';
-import { deleteCopy, makeDoubleListCopy, takeNotFavouriteCopies } from '../service/RealmServices'
 
 type CustomProps = {
     style: StyleProp<ViewStyle>,

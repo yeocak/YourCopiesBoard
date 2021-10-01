@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Clipboard} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Clipboard } from 'react-native';
 import Colors from '../Colors';
 import { SingleCopy } from '../model/CopyModels';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -25,12 +25,10 @@ export default class FavouriteCopyCard extends React.Component<Props, State> {
     }
 
     onClickedFavourite = () => {
-        const newData: SingleCopy = {
-            text: this.state.currentData.text,
-            isFavourite: !this.state.currentData.isFavourite,
-        }
+        const newData = new SingleCopy(this.state.currentData.text,
+            !this.state.currentData.isFavourite)
 
-        changeFavourite(this.state.currentData)
+        newData.changeIsFavourite()
 
         this.setState({
             currentData: newData
@@ -67,9 +65,9 @@ export default class FavouriteCopyCard extends React.Component<Props, State> {
                         </TouchableOpacity>
 
                         <TouchableOpacity
-                        onPress = {() => {
-                            Clipboard.setString(this.state.currentData.text)
-                        }}>
+                            onPress={() => {
+                                Clipboard.setString(this.state.currentData.text)
+                            }}>
                             <Icon name="cards"
                                 size={22}
                                 color={Colors.customYellow}

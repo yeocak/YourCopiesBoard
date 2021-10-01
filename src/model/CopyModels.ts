@@ -1,4 +1,4 @@
-import { addCopy } from "../service/RealmServices"
+import * as Services from "../service/RealmServices"
 
 export interface CopyModel {
     columnOne: SingleCopy[]
@@ -14,7 +14,7 @@ export class SingleCopy {
     public text: string
     public isFavourite = false
 
-    constructor (text: string)
+
     constructor (text: string, isFavourite?: boolean) {
         this.text = text
         this.isFavourite = isFavourite || false
@@ -22,8 +22,15 @@ export class SingleCopy {
 
     // Repositories
     addToDatabase = () => {
-        addCopy(this)
+        Services.addCopy(this)
     }
 
-    
+    deleteFromDatabase = () => {
+        Services.deleteCopy(this)
+    }
+
+    changeIsFavourite = () => {
+        Services.changeFavourite(this)
+    }
+
 }

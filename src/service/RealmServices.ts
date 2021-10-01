@@ -31,11 +31,12 @@ export const takeNotFavouriteCopies = async () => {
         schema: [copyData],
     })
 
-    const tasks = []
+    const tasks: SingleCopy[] = []
 
-    const allNotFavourites = realm.objects("Copy").filter((item) => {
-        return item.isFavourite == false
-    })
+    const allNotFavourites = (realm.objects("Copy") as Realm.Results<SingleCopy & Realm.Object>)
+        .filter((item: any) => {
+            return item.isFavourite == false
+        })
 
     allNotFavourites.forEach((item) => {
         tasks.push(item)
@@ -52,16 +53,18 @@ export const takeLastCopy = async () => {
         schema: [copyData],
     })
 
-    const realmData = realm.objects("Copy")[realm.objects("Copy").length - 1]
+    const realmData = realm.objects("Copy") as Realm.Results<SingleCopy & Realm.Object>
+
+    const lastCopy = realmData[realm.objects("Copy").length - 1]
 
     if (realmData == undefined) return null
 
-    const value = new SingleCopy(realmData.text, realmData.isFavourite)
+    const value = new SingleCopy(lastCopy.text, lastCopy.isFavourite)
 
     return value
 }
 
-export const makeDoubleListCopy = (realmObject: Realm.Results<Realm.Object>) => {
+export const makeDoubleListCopy = (copyList : SingleCopy[]) => {
     let isFirst = true
 
     let value: CopyModel = {
@@ -69,8 +72,8 @@ export const makeDoubleListCopy = (realmObject: Realm.Results<Realm.Object>) => 
         columnTwo: []
     }
 
-    for (let a = 0; a < realmObject.length; a++) {
-        const currentObject = new SingleCopy(realmObject[a].text, realmObject[a].isFavourite)
+    for (let a = 0; a < copyList.length; a++) {
+        const currentObject = new SingleCopy(copyList[a].text, copyList[a].isFavourite)
 
         if (isFirst) {
             value.columnOne.push(currentObject)
@@ -90,7 +93,7 @@ export const takeFavouritesCopies = async () => {
         schema: [copyData],
     })
 
-    const allData = realm.objects("Copy").filtered("isFavourite = true")
+    const allData = realm.objects("Copy").filtered("isFavourite = true") as Realm.Results<SingleCopy & Realm.Object>
 
     const value: SingleCopy[] = []
 
@@ -111,7 +114,7 @@ export const changeFavourite = async (copy: SingleCopy) => {
 
     const equal = realm.objects("Copy")
         .filtered(`isFavourite = ${copy.isFavourite}`)
-        .filtered(`text = "${copy.text}"`)
+        .filtered(`text = "${copy.text}"`) as Realm.Results<SingleCopy & Realm.Object>
 
     realm.write(() => {
         for (let a = 0; a < equal.length; a++) {
@@ -145,7 +148,7 @@ export const takeCopyWithText = async (text: string) => {
 
     const tasks = []
 
-    const allNotFavourites = realm.objects("Copy").filter((item) => {
+    const allNotFavourites = (realm.objects("Copy") as Realm.Results<SingleCopy & Realm.Object>).filter((item): boolean => {
         return item.text.includes(text)
     })
 
