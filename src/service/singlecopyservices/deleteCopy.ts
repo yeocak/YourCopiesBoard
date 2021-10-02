@@ -1,16 +1,12 @@
-import Realm from "realm";
 import SingleCopy from "../../model/SingleCopy";
-import copyData from "../realmCopySchema";
+import realmOpen from "../realmOpen";
 
 export const deleteCopy = async (copy: SingleCopy) => {
-    const realm = await Realm.open({
-        path: "copies",
-        schema: [copyData],
-    })
+    const realm = await realmOpen()
 
     const equal = realm.objects("Copy")
         .filtered(`isFavourite = ${copy.isFavourite}`)
-        .filtered(`text = "${copy.text}"`)
+        .filtered(`text = '${copy.text}'`)
 
     realm.write(() => {
         realm.delete(equal)

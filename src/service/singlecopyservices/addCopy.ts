@@ -1,12 +1,9 @@
 import Realm from "realm";
 import SingleCopy from "../../model/SingleCopy";
-import copyData from "../realmCopySchema";
+import realmOpen from "../realmOpen";
 
 export const addCopy = async (copy: SingleCopy) => {
-    const realm = await Realm.open({
-        path: "copies",
-        schema: [copyData],
-    })
+    const realm = await realmOpen()
 
     realm.write(() => {
         realm.create("Copy", {

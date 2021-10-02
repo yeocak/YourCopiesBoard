@@ -1,4 +1,4 @@
-const copyData = {
+const realmCopySchema = {
     name: "Copy",
     properties: {
         text: "string",
@@ -6,4 +6,4 @@ const copyData = {
     }
 }
 
-export default copyData;
+export default realmCopySchema;

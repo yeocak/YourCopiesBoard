@@ -1,14 +1,12 @@
 import Realm from "realm";
 import SingleCopy from "../../model/SingleCopy";
-import copyData from "../realmCopySchema";
+import realmOpen from "../realmOpen";
 
 export const takeFavouritesCopies = async () => {
-    const realm = await Realm.open({
-        path: "copies",
-        schema: [copyData],
-    })
+    const realm = await realmOpen()
 
-    const allData = realm.objects("Copy").filtered("isFavourite = true") as Realm.Results<SingleCopy & Realm.Object>
+    const allData = realm.objects("Copy")
+        .filtered("isFavourite = true") as Realm.Results<SingleCopy & Realm.Object>
 
     const value: SingleCopy[] = []
 

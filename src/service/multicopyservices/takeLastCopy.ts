@@ -1,12 +1,9 @@
 import Realm from "realm";
 import SingleCopy from "../../model/SingleCopy";
-import copyData from "../realmCopySchema";
+import realmOpen from "../realmOpen";
 
 export const takeLastCopy = async () => {
-    const realm = await Realm.open({
-        path: "copies",
-        schema: [copyData],
-    })
+    const realm = await realmOpen()
 
     const realmData = realm.objects("Copy") as Realm.Results<SingleCopy & Realm.Object>
 

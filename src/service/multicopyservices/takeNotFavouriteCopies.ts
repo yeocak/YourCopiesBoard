@@ -1,12 +1,9 @@
 import Realm from "realm";
 import SingleCopy from "../../model/SingleCopy";
-import copyData from "../realmCopySchema";
+import realmOpen from "../realmOpen";
 
 export const takeNotFavouriteCopies = async () => {
-    const realm = await Realm.open({
-        path: "copies",
-        schema: [copyData],
-    })
+    const realm = await realmOpen()
 
     const tasks: SingleCopy[] = []
 
