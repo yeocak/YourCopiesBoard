@@ -9,9 +9,9 @@ export const takeLastCopy = async () => {
 
     const lastCopy = realmData[realm.objects("Copy").length - 1]
 
-    if (realmData == undefined) return null
+    if (lastCopy == undefined) return null
 
-    const value = new SingleCopy(lastCopy.text, lastCopy.isFavourite)
+    const value = new SingleCopy(lastCopy.text, lastCopy.date, lastCopy.isFavourite)
 
     realm.close()
 

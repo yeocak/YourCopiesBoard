@@ -10,8 +10,12 @@ import setClipboardListener from './utils/setClipboardListener';
 async function takeCopyToDatabase() {
     const currentCopy = await Clipboard.getString()
     const lastCopy = await takeLastCopy()
-    if (lastCopy != null && lastCopy.text == currentCopy) return
-    const copy = new SingleCopy(currentCopy)
+
+    if (lastCopy != undefined && lastCopy.text != undefined && lastCopy.text == currentCopy) return
+
+    const currentDate = Date.now()
+
+    const copy = new SingleCopy(currentCopy, currentDate)
     copy.addToDatabase()
 }
 

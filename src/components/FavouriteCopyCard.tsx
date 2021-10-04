@@ -26,6 +26,7 @@ export default class FavouriteCopyCard extends React.Component<Props, State> {
 
     onClickedFavourite = () => {
         const newData = new SingleCopy(this.state.currentData.text,
+            this.state.currentData.date,
             !this.state.currentData.isFavourite)
 
         newData.changeIsFavourite()

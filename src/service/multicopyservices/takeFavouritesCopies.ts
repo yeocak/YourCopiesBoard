@@ -11,9 +11,11 @@ export const takeFavouritesCopies = async () => {
     const value: SingleCopy[] = []
 
     for (let a = 0; a < allData.length; a++) {
-        const newData = new SingleCopy(allData[a].text, true)
+        const newData = new SingleCopy(allData[a].text,allData[a].date, true)
         value.push(newData)
     }
 
-    return value
+    return value.sort((item: SingleCopy) => {
+        return item.date
+    }).reverse()
 }

@@ -1,4 +1,3 @@
-import Realm from "realm";
 import SingleCopy from "../../model/SingleCopy";
 import realmOpen from "../realmOpen";
 

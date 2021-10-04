@@ -11,7 +11,7 @@ const makeDoubleListCopy = (copyList : SingleCopy[]) => {
     }
 
     for (let a = 0; a < copyList.length; a++) {
-        const currentObject = new SingleCopy(copyList[a].text, copyList[a].isFavourite)
+        const currentObject = new SingleCopy(copyList[a].text,copyList[a].date, copyList[a].isFavourite)
 
         if (isFirst) {
             value.columnOne.push(currentObject)

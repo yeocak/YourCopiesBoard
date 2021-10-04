@@ -3,16 +3,18 @@ import * as Services from "../service/RealmSingleRepositories"
 export default interface SingleCopy {
     text: string
     isFavourite: boolean
+    date: number
 }
 
 export default class SingleCopy {
     public text: string
     public isFavourite = false
+    public date: number
 
-
-    constructor (text: string, isFavourite?: boolean) {
+    constructor (text: string, date: number, isFavourite?: boolean) {
         this.text = text
         this.isFavourite = isFavourite || false
+        this.date = date
     }
 
     // Repositories

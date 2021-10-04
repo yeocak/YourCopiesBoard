@@ -15,11 +15,13 @@ export const takeCopyWithText = async (text: string, ignoreCaps?: boolean) => {
         })
 
     allNotFavourites.forEach((item) => {
-        const newData = new SingleCopy(item.text, item.isFavourite)
+        const newData = new SingleCopy(item.text, item.date, item.isFavourite)
         tasks.push(newData)
     })
 
     realm.close()
 
-    return tasks
+    return tasks.sort((item: SingleCopy) => {
+        return item.date
+    }).reverse()
 }

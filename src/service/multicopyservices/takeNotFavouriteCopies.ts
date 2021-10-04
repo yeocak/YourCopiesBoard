@@ -13,11 +13,13 @@ export const takeNotFavouriteCopies = async () => {
         })
 
     allNotFavourites.forEach((item) => {
-        const newItem = new SingleCopy(item.text, false)
+        const newItem = new SingleCopy(item.text, item.date, false)
         tasks.push(newItem)
     })
 
     realm.close()
 
-    return tasks
+    return tasks.sort((item: SingleCopy) => {
+        return item.date
+    }).reverse()
 }
